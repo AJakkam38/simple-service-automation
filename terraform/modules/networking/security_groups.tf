@@ -1,11 +1,11 @@
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh_sg"
-  description = "Allow SSH inbound connections"
+resource "aws_security_group" "allow_http" {
+  name        = "allow_http_sg"
+  description = "Allow http inbound connections"
   vpc_id = var.vpc_id
 
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -18,10 +18,10 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = {
-    Name = "allow_ssh_sg"
+    Name = "Allow HTTP Security Group"
   }
 }
 
-output "ssh_sg_id" {
-  value = aws_security_group.allow_ssh.id
+output "http_sg_id" {
+  value = aws_security_group.allow_http.id
 }

@@ -7,12 +7,17 @@ resource "aws_route_table" "main_vpc_public" {
     }
 
     tags = {
-        Name = "Public Subnets Route Table for Main VPC"
+        Name = "Public Subnet Route Table for Main VPC"
     }
 }
 
-resource "aws_route_table_association" "main_vpc_public" {
-    subnet_id = var.public_subnet_id
+resource "aws_route_table_association" "main_vpc_public_1" {
+    subnet_id = var.public_subnet_id_1
+    route_table_id = var.public_route_table_id
+}
+
+resource "aws_route_table_association" "main_vpc_public_2" {
+    subnet_id = var.public_subnet_id_2
     route_table_id = var.public_route_table_id
 }
 
@@ -20,7 +25,7 @@ resource "aws_route_table" "main_vpc_private" {
     vpc_id = var.vpc_id
 
     tags = {
-        Name = "Local Route Table for Isolated Private Subnet"
+        Name = "Private Subnet Route Table for Main VPC"
     }
 }
 
