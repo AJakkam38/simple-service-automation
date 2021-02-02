@@ -7,3 +7,7 @@ variable "public_subnet_id_1" {}
 variable "public_subnet_id_2" {}
 
 variable "http_sg_id" {}
+
+variable "redis_sg_id" {}
+
+variable "ssh_sg_id" {}

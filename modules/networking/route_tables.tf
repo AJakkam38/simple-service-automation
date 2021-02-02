@@ -29,8 +29,13 @@ resource "aws_route_table" "main_vpc_private" {
     }
 }
 
-resource "aws_route_table_association" "main_vpc_private" {
-    subnet_id = var.private_subnet_id
+resource "aws_route_table_association" "main_vpc_private_1" {
+    subnet_id = var.private_subnet_id_1
+    route_table_id = var.private_route_table_id
+}
+
+resource "aws_route_table_association" "main_vpc_private_2" {
+    subnet_id = var.private_subnet_id_2
     route_table_id = var.private_route_table_id
 }
 

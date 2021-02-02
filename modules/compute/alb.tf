@@ -20,7 +20,7 @@ resource "aws_lb" "web_alb" {
 # Define a target group
 resource "aws_lb_target_group" "web_alb" {
   name     = "web-alb-tg"
-  port     = 80
+  port     = 5000
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 }
@@ -48,8 +48,12 @@ resource "aws_lb_listener_rule" "web_alb" {
   }
 
   condition {
-    host_header {
-    values = ["example.com"]
+    path_pattern  {
+    values = [
+      "/",
+      "/login",
+      "/logout"
+    ]
     }
   }
 }
